@@ -9,18 +9,16 @@ PLAIN='\033[0m'
 # 以下网站是随机从Google上找到的无广告小说网站，不喜欢请改成其他网址，以http或https开头
 # 搭建好后无法打开伪装域名，可能是反代小说网站挂了，请在网站留言，或者Github发issue，以便替换新的网站
 SITES=(
-	http://www.zhuizishu.com/
-	http://xs.56dyc.com/
-	http://www.ddxsku.com/
-	http://www.biqu6.com/
+	https://www.kehu33.asia/
 	https://www.wenshulou.cc/
 	http://www.55shuba.com/
-	http://www.39shubao.com/
-	https://www.23xsw.cc/
-	https://www.jueshitangmen.info/
-	https://www.zhetian.org/
-	http://www.bequgexs.com/
-	http://www.tjwl.com/
+	http://www.bookshuku.info/
+	http://www.qishuxx.com/
+	https://www.txt80.cc/
+	https://www.bqg789.com/
+	https://www.txt99.org
+	http://b.faloo.com/
+	https://www.bookben.net/
 )
 
 CONFIG_FILE="/usr/local/etc/xray/config.json"
@@ -123,9 +121,9 @@ statusText() {
 normalizeVersion() {
 	if [ -n "$1" ]; then
 		case "$1" in
-			v*) echo "$1" ;;
+			v*) echo "v1.5.3" ;;
 			http*) echo "v1.5.3" ;;
-			*) echo "v$1" ;;
+			*) echo "v1.5.3" ;;
 		esac
 	else
 		echo ""
@@ -262,13 +260,15 @@ getData() {
 		echo ""
 		colorEcho $BLUE " 请选择流控模式:"
 		echo -e "   1) xtls-rprx-direct [$RED推荐$PLAIN]"
-		echo "   2) xtls-rprx-origin"
+		echo -e "   2) xtls-rprx-origin"
+		echo -e "   3) xtls-rprx-vision"
 		read -p "  请选择流控模式[默认:direct]" answer
 		[[ -z "$answer" ]] && answer=1
 		case $answer in
 			1) FLOW="xtls-rprx-direct" ;;
 			2) FLOW="xtls-rprx-origin" ;;
-			*) colorEcho $RED " 无效选项，使用默认的xtls-rprx-direct" && FLOW="xtls-rprx-direct" ;;
+			3) FLOW="xtls-rprx-vision" ;;
+		        *) colorEcho $RED " 无效选项，使用默认的xtls-rprx-direct" && FLOW="xtls-rprx-direct" ;;
 		esac
 		colorEcho $BLUE " 流控模式：$FLOW"
 	fi
@@ -1639,9 +1639,8 @@ menu() {
 	clear
 	echo "#############################################################"
 	echo -e "#                     ${RED}Xray一键安装脚本${PLAIN}                      #"
-	echo -e "# ${GREEN}作者${PLAIN}: 网络跳越(hijk) & MisakaNo                           #"
-	echo -e "# ${GREEN}博客${PLAIN}: https://owo.misaka.rest                             #"
-	echo -e "# ${GREEN}TG群${PLAIN}: https://t.me/misakanetcn                            #"
+	echo -e "# ${GREEN}作者${PLAIN}: 网络跳越(hijk) & 失落的梦                           #"
+	echo -e "# ${GREEN}博客${PLAIN}: https://www.kehu33.asia                             #"
 	echo "#############################################################"
 	echo -e "  ${GREEN}1.${PLAIN}   安装Xray-VMESS"
 	echo -e "  ${GREEN}2.${PLAIN}   安装Xray-${BLUE}VMESS+mKCP${PLAIN}"
